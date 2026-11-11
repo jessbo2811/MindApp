@@ -1,0 +1,35 @@
+.gradient-bg {
+    min-height: 100vh;
+    width: 100%;
+    background: #a798fa;
+    background: linear-gradient(90deg,rgba(167, 152, 250, 1) 0%, rgba(103, 103, 199, 1) 37%, rgba(114, 213, 214, 1) 100%);
+    padding: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.app-window {
+    width: 100%;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #d0ccc4;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+    min-height: calc(100vh - 64px);
+}
+
+.app-heading {
+    display: flex;
+    align-items: flex-start;
+    padding: 5%;
+}
+
+div {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "GRAD" 0;
+}
