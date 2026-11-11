@@ -1,6 +1,6 @@
 const API_KEY = "7bddc59f2ca9436ea55142237261011&q";
 
-document.getElementById("getWeather").addEventListener("click", () => {
+window.addEventListener("load", () => {
     navigator.geolocation.getCurrentPosition(getWeather);
 });
 
