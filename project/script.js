@@ -8,20 +8,30 @@ async function getWeather(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
+function formatTime(number) {
+    return number < 10 ? '0' + number : number;
+}
+
     try {
         const response = await fetch(
             `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${lat},${lon}`
         );
 
         const data = await response.json();
+        const now = new Date();
+        const formattedTime = `${formatTime(now.getHours())}:${formatTime(now.getMinutes())}`;
+
+        document.getElementById("location").innerHTML = `
+            <h2>${data.location.name}</h2>
+            <p>${data.location.region}, ${data.location.country}</p>
+            <p>${formattedTime}</p>
+            <p>${now.toDateString()}</p>
+        `;
 
         document.getElementById("weather").innerHTML = `
-            <h2>${data.location.name}</h2>
-            <p>${data.location.region}</p>
-            <p>${data.location.country}</p>
+            <img src="https:${data.current.condition.icon}" alt="weather icon">
             <p>${data.current.temp_c}°C</p>
             <p>${data.current.condition.text}</p>
-            <img src="https:${data.current.condition.icon}" alt="weather icon">
         `;
     }
     catch (error) {
@@ -29,4 +39,19 @@ async function getWeather(position) {
         document.getElementById("weather").textContent =
             "Failed to load weather data";
     }
+
+    const expression = ["", "😄", "😌", "🙂", "😴", "😢", "😟", "😡"];
+    const emotions = ["", "Happy", "Calm", "Okay", "Tired", "Sad", "Anxious", "Angry"];
+
+    const slider = document.getElementById("slider");
+    const emoji = document.getElementById("mood-expression");
+    const mood = document.getElementById("mood-display");
+
+    slider.addEventListener("input", () => {
+        mood.textContent = emotions[slider.value];
+    });
+
+    slider.addEventListener("input", () => {
+        emoji.textContent = expression[slider.value];
+    });
 }
