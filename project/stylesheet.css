@@ -199,3 +199,9 @@ button:active {
     background-color: #fff;
     border-radius: 24px;
 }
+
+.comment-box {
+width: 400px;
+height: 200px;
+font-size: 14pt;
+}
